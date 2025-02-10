@@ -1,0 +1,1 @@
+# Sequences vs collections in python
