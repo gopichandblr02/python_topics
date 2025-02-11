@@ -1,3 +1,10 @@
+def main():
+    # Your code here
+    print("Hello from main!")
+
+if __name__ == "__main__":
+    main()
+
 
 """
 Python is a widely used programming language for creating real-world applications. It is extensively used in:
