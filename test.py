@@ -1,3 +1,7 @@
+from collections import defaultdict
+d = defaultdict(int)
+print(d["a"])
+
 # class InvalidAgeException(Exception):
 #     "Raised when the input value is less than 18"
 #     pass
