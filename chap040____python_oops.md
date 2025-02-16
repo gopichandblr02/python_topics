@@ -15,6 +15,7 @@ Even though the object class doesn’t define any attributes or methods by defau
 Example: Implicit Inheritance from object
 Here’s an example to show how the default object superclass works in Python:
 ```
+
 class MyClass:
     pass  # No superclass specified, so it implicitly inherits from object
 
@@ -35,6 +36,7 @@ MyClass.__bases__ confirms that its superclass is object.
 Default Inheritance from object Example:
 When you don't explicitly define a parent class, Python will automatically make your class a subclass of object. This is why MyClass inherits all the methods that are defined in object, like __str__ and __repr__.
 ```
+
 class MyClass:
     def __init__(self, name):
         self.name = name
