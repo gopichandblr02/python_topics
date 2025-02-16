@@ -2,9 +2,11 @@
 #### Regular expressions (regex) in Python allow you to search, match, and manipulate text patterns. The re module provides regex functionality.
 
 1. Importing the re Module
+
 ```
 import re
 ```
+
 2. Basic Regex Functions
 
 | Function	        | Description                                  |
@@ -29,6 +31,7 @@ if match:
 else:
     print("No match")
 ```
+
 4. search() – Find Pattern Anywhere
 
 ```
@@ -40,6 +43,7 @@ match = re.search(r"\$\d+", text)  # Find "$" followed by numbers
 if match:
     print("Found:", match.group())  # Output: Found: $50
 ```
+
 5. findall() – Find All Matches
 
 ```
@@ -49,7 +53,9 @@ text = "My numbers are 123, 456, and 789."
 numbers = re.findall(r"\d+", text)  # Find all numbers
 print(numbers)  # Output: ['123', '456', '789']
 ```
+
 6. finditer() – Iterate Over Matches
+
 ```
 import re
 text = "Email: user@example.com, support@service.com"
@@ -60,10 +66,10 @@ for match in matches:
 Output:
 Found email: user@example.com
 Found email: support@service.com
-
 ```
 
 7. sub() – Replace Matches
+
 ```
 import re
 
@@ -73,13 +79,13 @@ print(new_text)  # Output: I love Java and Java is awesome!
 ```
 
 8. split() – Split String by Pattern
+
 ```
 import re
 
 text = "apple, orange;banana|grape"
 words = re.split(r"[,;|]", text)  # Split using multiple delimiters
 print(words)  # Output: ['apple', ' orange', 'banana', 'grape']
-
 ```
 
 9. Regex Metacharacters and Special Sequences
@@ -110,6 +116,7 @@ Special Sequences
 |\S|	Any non-whitespace	|"\S+" matches "hello" |
 
 10. Example: Extract Phone Numbers
+
 ```
 import re
 text = "Call me at 123-456-7890 or 987.654.3210"
@@ -118,6 +125,7 @@ pattern = r"\d{3}[-.]\d{3}[-.]\d{4}"  # Matches "123-456-7890" or "987.654.3210"
 matches = re.findall(pattern, text)
 print(matches)  # Output: ['123-456-7890', '987.654.3210']
 ```
+
 11. Example: Validate Email Addresses
 
 ```
@@ -133,6 +141,7 @@ print(is_valid_email("invalid-email"))  # Output: False
 ```
 
 12. Example: Extract URLs from Text
+
 ```
 import re
 
@@ -142,6 +151,7 @@ pattern = r"https?://[a-zA-Z0-9./-]+"
 urls = re.findall(pattern, text)
 print(urls)  # Output: ['https://www.google.com', 'http://example.com']
 ```
+
 When to Use Regex?
 * Validating input (emails, phone numbers, usernames) 
 * Searching and extracting specific patterns 

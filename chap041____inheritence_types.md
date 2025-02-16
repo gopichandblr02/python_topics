@@ -4,6 +4,7 @@ In Python, inheritance allows one class (child or subclass) to inherit the attri
 #### 1. Single Inheritance
 In single inheritance, a subclass inherits from only one parent class.
 Example:
+
 ```
 class Animal:
     def speak(self):
@@ -17,11 +18,13 @@ dog = Dog()
 dog.speak()  # Inherited method from Animal
 dog.bark()   # Method from Dog
 ```
+
 #### 2. Multiple Inheritance
 
 In multiple inheritance, a subclass can inherit from more than one parent class. The subclass will inherit attributes and methods from all parent classes.
 
 Example:
+
 ```
 class Animal:
     def speak(self):
@@ -40,11 +43,13 @@ dog.speak()  # Inherited from Animal
 dog.play()   # Inherited from Pet
 dog.bark()   # Defined in Dog
 ```
+
 #### 3. Multilevel Inheritance
 
 In multilevel inheritance, a subclass inherits from another subclass. This creates a chain of inheritance, where a class inherits from a class that is already a subclass.
 
 Example:
+
 ```
 class Animal:
     def speak(self):
@@ -63,11 +68,13 @@ puppy.speak()  # Inherited from Animal
 puppy.bark()   # Inherited from Dog
 puppy.whine()  # Defined in Puppy
 ```
+
 #### 4. Hierarchical Inheritance
 
 In hierarchical inheritance, multiple subclasses inherit from a single parent class. All the subclasses can access the attributes and methods of the parent class.
 
 Example:
+
 ```
 class Animal:
     def speak(self):
@@ -89,11 +96,13 @@ cat = Cat()
 cat.speak()  # Inherited from Animal
 cat.meow()
 ```
+
 #### 5. Hybrid Inheritance
 
 Hybrid inheritance is a combination of two or more types of inheritance. It may involve any mix of single, multiple, multilevel, or hierarchical inheritance.
 
 Example (Multiple + Multilevel):
+
 ```
 class Animal:
     def speak(self):
@@ -113,6 +122,7 @@ dog.walk()   # Inherited from Mammal
 dog.bark()   # Defined in Dog
 
 ```
+
 #### Method Resolution Order (MRO) in Multiple Inheritance
 In Python, when you use multiple inheritance, the Method Resolution Order (MRO) determines the order in which the classes are checked to find the method or attribute.
 
