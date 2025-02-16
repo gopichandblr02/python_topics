@@ -14,8 +14,8 @@ Even though the object class doesn’t define any attributes or methods by defau
 4. __eq__, __ne__, etc.: Methods for comparing objects.
 Example: Implicit Inheritance from object
 Here’s an example to show how the default object superclass works in Python:
-```
 
+```
 class MyClass:
     pass  # No superclass specified, so it implicitly inherits from object
 
@@ -27,8 +27,8 @@ print(MyClass.__bases__)  # Output: (<class 'object'>,)
 
 # Checking the class of the object
 print(type(obj))  # Output: <class '__main__.MyClass'>
-
 ```
+
 In this example:
 
 MyClass implicitly inherits from object because no superclass was specified.
