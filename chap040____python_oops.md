@@ -1,429 +1,361 @@
-### Python OOPs Concepts
-Object Oriented Programming is a fundamental concept in Python, empowering developers to build modular, maintainable, and
-scalable applications. By understanding the core OOP principles (classes, objects, inheritance, encapsulation, polymorphism,
-and abstraction), programmers can leverage the full potential of Python OOP capabilities to design elegant and efficient 
-solutions to complex problems.
-OOPs is a way of organizing code that uses objects and classes to represent real-world entities and their behavior. In OOPs,
-object has attributes thing that has specific data and can perform certain actions using methods.
+Object-Oriented Programming is a programming paradigm that organizes code into classes and objects. It helps make code more modular, reusable, and easier to maintain.
+### Basics of OOPs in python
 
-#### OOPs Concepts in Python
-1. Class in Python
-2. Objects in Python
-3. Polymorphism in Python
-4. Encapsulation in Python
-5. Inheritance in Python
-6. Data Abstraction in Python
+### 1. object super class (default): 
+In Python, every class implicitly inherits from a default superclass called object if no other superclass is explicitly defined. This means that every class in Python, whether it's a custom class or a built-in class, is a subclass of object by default.
 
-#### Python Class
-A class is a collection of objects. Classes are blueprints for creating objects. A class defines a set of attributes and
-methods that the created objects (instances) can have.
+This class provides basic methods that all Python objects inherit, such as __init__, __str__, __repr__, and others.
+Why is object Important?
+Even though the object class doesn’t define any attributes or methods by default, it ensures that every Python class has access to fundamental methods like:
 
-#### Some points on Python class:  
-
-* Classes are created by keyword class. 
-* Attributes are the variables that belong to a class. 
-* Attributes are always public and can be accessed using the dot (.) operator. Example: Myclass.Myattribute
-#### Creating a Class
-Here, the class keyword indicates that we are creating a class followed by name of the class (Dog in this case).
+1. __init__: The constructor (though you can override it).
+2. __str__: A method to return a string representation of the object (often used for printing).
+3. __repr__: A method to return a detailed string representation of the object.
+4. __eq__, __ne__, etc.: Methods for comparing objects.
+Example: Implicit Inheritance from object
+Here’s an example to show how the default object superclass works in Python:
 ```
-class Dog:
-    species = "Canine"  # Class attribute
-    def __init__(self, name, age):
-        self.name = name  # Instance attribute
-        self.age = age  # Instance attribute
-```
-
-#### Explanation:
-* class Dog: Defines a class named Dog.
-* species: A class attribute shared by all instances of the class.
-* __init__ method: Initializes the name and age attributes when a new object is created.
-
-#### Python Objects
-An Object is an instance of a Class. It represents a specific implementation of the class and holds its own data.
-An object consists of:
-* State: It is represented by the attributes and reflects the properties of an object. 
-* Behavior: It is represented by the methods of an object and reflects the response of an object to other objects. 
-* Identity: It gives a unique name to an object and enables one object to interact with other objects.
-
-#### Creating Object
-Creating an object in Python involves instantiating a class to create a new instance of that class. 
-This process is also referred to as object instantiation.
-```
-class Dog:
-    species = "Canine"  # Class attribute
-
-    def __init__(self, name, age):
-        self.name = name  # Instance attribute
-        self.age = age  # Instance attribute
-
-# Creating an object of the Dog class
-dog1 = Dog("Buddy", 3)
-print(dog1.name) 
-print(dog1.species)
-```
-Output
-Buddy
-Canine
-Explanation:
-
-* dog1 = Dog(“Buddy”, 3): Creates an object of the Dog class with name as “Buddy” and age as 3. 
-* dog1.name: Accesses the instance attribute name of the dog1 object. 
-* dog1.species: Accesses the class attribute species of the dog1 object.
-
-
-#### Self Parameter
-self parameter is a reference to the current instance of the class. It allows us to access the attributes and methods of the object.
-```
-class Dog:
-    species = "Canine"  # Class attribute
-
-    def __init__(self, name, age):
-        self.name = name  # Instance attribute
-        self.age = age  # Instance attribute
-
-dog1 = Dog("Buddy", 3)  # Create an instance of Dog
-dog2 = Dog("Charlie", 5)  # Create another instance of Dog
-
-print(dog1.name, dog1.age, dog1.species)  # Access instance and class attributes
-print(dog2.name, dog2.age, dog2.species)  # Access instance and class attributes
-print(Dog.species)  # Access class attribute directly
-```
-Output
-Buddy 3 Canine
-Charlie 5 Canine
-Canine
-
-Explanation:
-* self.name: Refers to the name attribute of the object (dog1) calling the method.
-* dog1.bark(): Calls the bark method on dog1.
-
-#### __init__ Method
-__init__ method is the constructor in Python, automatically called when a new object is created. It initializes the attributes of the class.
-```
-class Dog:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-dog1 = Dog("Buddy", 3)
-print(dog1.name)  
-```
-Output
-Buddy
-Explanation:
-
-__init__: Special method used for initialization.
-self.name and self.age: Instance attributes initialized in the constructor.
-Class and Instance Variables
-In Python, variables defined in a class can be either class variables or instance variables, and understanding the distinction between them is crucial for object-oriented programming.
-
-Class Variables
-
-These are the variables that are shared across all instances of a class. It is defined at the class level, outside any methods. All objects of the class share the same value for a class variable unless explicitly overridden in an object.
-
-Instance Variables
-
-Variables that are unique to each instance (object) of a class. These are defined within the __init__ method or other instance methods. Each object maintains its own copy of instance variables, independent of other objects.
-
-
-
-
-class Dog:
-    # Class variable
-    species = "Canine"
-
-    def __init__(self, name, age):
-        # Instance variables
-        self.name = name
-        self.age = age
-
-# Create objects
-dog1 = Dog("Buddy", 3)
-dog2 = Dog("Charlie", 5)
-
-# Access class and instance variables
-print(dog1.species)  # (Class variable)
-print(dog1.name)     # (Instance variable)
-print(dog2.name)     # (Instance variable)
-
-# Modify instance variables
-dog1.name = "Max"
-print(dog1.name)     # (Updated instance variable)
-
-# Modify class variable
-Dog.species = "Feline"
-print(dog1.species)  # (Updated class variable)
-print(dog2.species)  
-
-Output
-Canine
-Buddy
-Charlie
-Max
-Feline
-Feline
-Explanation:
-
-Class Variable (species): Shared by all instances of the class. Changing Dog.species affects all objects, as it’s a property of the class itself.
-Instance Variables (name, age): Defined in the __init__ method. Unique to each instance (e.g., dog1.name and dog2.name are different).
-Accessing Variables: Class variables can be accessed via the class name (Dog.species) or an object (dog1.species). Instance variables are accessed via the object (dog1.name).
-Updating Variables: Changing Dog.species affects all instances. Changing dog1.name only affects dog1 and does not impact dog2.
-Python Inheritance
-Inheritance allows a class (child class) to acquire properties and methods of another class (parent class). It supports hierarchical classification and promotes code reuse.
-
-Types of Inheritance:
-Single Inheritance: A child class inherits from a single parent class.
-Multiple Inheritance: A child class inherits from more than one parent class.
-Multilevel Inheritance: A child class inherits from a parent class, which in turn inherits from another class.
-Hierarchical Inheritance: Multiple child classes inherit from a single parent class.
-Hybrid Inheritance: A combination of two or more types of inheritance.
-
-
-
-# Single Inheritance
-class Dog:
-    def __init__(self, name):
-        self.name = name
-
-    def display_name(self):
-        print(f"Dog's Name: {self.name}")
-
-class Labrador(Dog):  # Single Inheritance
-    def sound(self):
-        print("Labrador woofs")
-
-# Multilevel Inheritance
-class GuideDog(Labrador):  # Multilevel Inheritance
-    def guide(self):
-        print(f"{self.name}Guides the way!")
-
-# Multiple Inheritance
-class Friendly:
-    def greet(self):
-        print("Friendly!")
-
-class GoldenRetriever(Dog, Friendly):  # Multiple Inheritance
-    def sound(self):
-        print("Golden Retriever Barks")
-
-# Example Usage
-lab = Labrador("Buddy")
-lab.display_name()
-lab.sound()
-
-guide_dog = GuideDog("Max")
-guide_dog.display_name()
-guide_dog.guide()
-
-retriever = GoldenRetriever("Charlie")
-retriever.display_name()
-retriever.greet()
-retriever.sound()
-Explanation:
-
-Single Inheritance: Labrador inherits Dog’s attributes and methods.
-Multilevel Inheritance: GuideDog extends Labrador, inheriting both Dog and Labrador functionalities.
-Multiple Inheritance: GoldenRetriever inherits from both Dog and Friendly.
-Note: For more information, refer to our Inheritance in Python tutorial.
-
-Python Polymorphism
-Polymorphism allows methods to have the same name but behave differently based on the object’s context. It can be achieved through method overriding or overloading.
-
-Types of Polymorphism
-Compile-Time Polymorphism: This type of polymorphism is determined during the compilation of the program. It allows methods or operators with the same name to behave differently based on their input parameters or usage. It is commonly referred to as method or operator overloading.
-Run-Time Polymorphism: This type of polymorphism is determined during the execution of the program. It occurs when a subclass provides a specific implementation for a method already defined in its parent class, commonly known as method overriding.
-Code Example:
-
-
-
-# Parent Class
-class Dog:
-    def sound(self):
-        print("dog sound")  # Default implementation
-
-# Run-Time Polymorphism: Method Overriding
-class Labrador(Dog):
-    def sound(self):
-        print("Labrador woofs")  # Overriding parent method
-
-class Beagle(Dog):
-    def sound(self):
-        print("Beagle Barks")  # Overriding parent method
-
-# Compile-Time Polymorphism: Method Overloading Mimic
-class Calculator:
-    def add(self, a, b=0, c=0):
-        return a + b + c  # Supports multiple ways to call add()
-
-# Run-Time Polymorphism
-dogs = [Dog(), Labrador(), Beagle()]
-for dog in dogs:
-    dog.sound()  # Calls the appropriate method based on the object type
-
-
-# Compile-Time Polymorphism (Mimicked using default arguments)
-calc = Calculator()
-print(calc.add(5, 10))  # Two arguments
-print(calc.add(5, 10, 15))  # Three arguments
-Explanation:
-
-1. Run-Time Polymorphism:
-
-Demonstrated using method overriding in the Dog class and its subclasses (Labrador and Beagle).
-The correct sound method is invoked at runtime based on the actual type of the object in the list.
-2. Compile-Time Polymorphism:
-
-Python does not natively support method overloading. Instead, we use a single method (add) with default arguments to handle varying numbers of parameters.
-Different behaviors (adding two or three numbers) are achieved based on how the method is called.
-Note: For more information, refer to our Polymorphism in Python Tutorial.
-
-Python Encapsulation
-Encapsulation is the bundling of data (attributes) and methods (functions) within a class, restricting access to some components to control interactions.
-
-A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
-
-
-Types of Encapsulation:
-Public Members: Accessible from anywhere.
-Protected Members: Accessible within the class and its subclasses.
-Private Members: Accessible only within the class.
-Code Example:
-
-
-
-class Dog:
-    def __init__(self, name, breed, age):
-        self.name = name  # Public attribute
-        self._breed = breed  # Protected attribute
-        self.__age = age  # Private attribute
-
-    # Public method
-    def get_info(self):
-        return f"Name: {self.name}, Breed: {self._breed}, Age: {self.__age}"
-
-    # Getter and Setter for private attribute
-    def get_age(self):
-        return self.__age
-
-    def set_age(self, age):
-        if age > 0:
-            self.__age = age
-        else:
-            print("Invalid age!")
-
-# Example Usage
-dog = Dog("Buddy", "Labrador", 3)
-
-# Accessing public member
-print(dog.name)  # Accessible
-
-# Accessing protected member
-print(dog._breed)  # Accessible but discouraged outside the class
-
-# Accessing private member using getter
-print(dog.get_age())
-
-# Modifying private member using setter
-dog.set_age(5)
-print(dog.get_info())
-Explanation:
-
-Public Members: Easily accessible, such as name.
-Protected Members: Used with a single _, such as _breed. Access is discouraged but allowed in subclasses.
-Private Members: Used with __, such as __age. Access requires getter and setter methods.
-Note: for more information, refer to our Encapsulation in Python Tutorial.
-
-Data Abstraction 
-Abstraction hides the internal implementation details while exposing only the necessary functionality. It helps focus on “what to do” rather than “how to do it.”
-
-Types of Abstraction:
-Partial Abstraction: Abstract class contains both abstract and concrete methods.
-Full Abstraction: Abstract class contains only abstract methods (like interfaces).
-Code Example:
-
-
-
-from abc import ABC, abstractmethod
-
-class Dog(ABC):  # Abstract Class
-    def __init__(self, name):
-        self.name = name
-
-    @abstractmethod
-    def sound(self):  # Abstract Method
-        pass
-
-    def display_name(self):  # Concrete Method
-        print(f"Dog's Name: {self.name}")
-
-class Labrador(Dog):  # Partial Abstraction
-    def sound(self):
-        print("Labrador Woof!")
-
-class Beagle(Dog):  # Partial Abstraction
-    def sound(self):
-        print("Beagle Bark!")
-
-# Example Usage
-dogs = [Labrador("Buddy"), Beagle("Charlie")]
-for dog in dogs:
-    dog.display_name()  # Calls concrete method
-    dog.sound()  # Calls implemented abstract method
-Explanation:
-
-Partial Abstraction: The Dog class has both abstract (sound) and concrete (display_name) methods.
-Why Use It: Abstraction ensures consistency in derived classes by enforcing the implementation of abstract methods.
-To practice Python OOPs problems, you can refer to our:
-
-
-Python OOPs Exercise Questions
-To learn more concepts of OOPs refer to:
-
-
-Object Oriented Programming in Python | Set 2 (Data Hiding and Object Printing)
-Python OOPs – FAQs
-What are the 4 pillars of OOP Python?
-The 4 pillars of object-oriented programming (OOP) in Python (and generally in programming) are:
-
-
-Encapsulation: Bundling data (attributes) and methods (functions) that operate on the data into a single unit (class).
-Abstraction: Hiding complex implementation details and providing a simplified interface.
-Inheritance: Allowing a class to inherit attributes and methods from another class, promoting code reuse.
-Polymorphism: Using a single interface to represent different data types or objects.
-Is OOP used in Python?
-Yes, Python fully supports object-oriented programming (OOP) concepts. Classes, objects, inheritance, encapsulation, and polymorphism are fundamental features of Python.
-
-
-Is Python 100% object-oriented?
-Python is a multi-paradigm programming language, meaning it supports multiple programming paradigms including procedural, functional, and object-oriented programming. While Python is predominantly object-oriented, it also allows for procedural and functional programming styles.
-
-
-What is __init__ in Python?
-__init__ is a special method (constructor) in Python classes. It’s automatically called when a new instance (object) of the class is created. Its primary purpose is to initialize the object’s attributes or perform any setup required for the object.
-
-
 class MyClass:
-    def __init__(self, arg1, arg2):
-        self.arg1 = arg1
-        self.arg2 = arg2
-What is super() in Python?
-super() is used to call methods of a superclass (parent class) from a subclass (child class). It returns a proxy object that delegates method calls to the superclass. This is useful for accessing inherited methods that have been overridden in a subclass.
+    pass  # No superclass specified, so it implicitly inherits from object
 
+# Creating an instance of MyClass
+obj = MyClass()
 
-class ChildClass(ParentClass):
-    def __init__(self, arg1, arg2):
-        super().__init__(arg1)  # Calls the __init__() method of the ParentClass
-        self.arg2 = arg2
-Why is self used in Python?
-'self' is a convention in Python used to refer to the instance of a class (object) itself. It’s the first parameter of instance methods and refers to the object calling the method. It allows methods to access and manipulate attributes (variables) that belong to the instance.
+# Checking the superclass of MyClass
+print(MyClass.__bases__)  # Output: (<class 'object'>,)
 
+# Checking the class of the object
+print(type(obj))  # Output: <class '__main__.MyClass'>
+```
+In this example:
 
+MyClass implicitly inherits from object because no superclass was specified.
+MyClass.__bases__ confirms that its superclass is object.
+Default Inheritance from object Example:
+When you don't explicitly define a parent class, Python will automatically make your class a subclass of object. This is why MyClass inherits all the methods that are defined in object, like __str__ and __repr__.
+```
+class MyClass:
+    def __init__(self, name):
+        self.name = name
+
+# Creating an object
+obj = MyClass("Sample Object")
+
+# Using the __str__ method inherited from object (or can be overridden)
+print(obj)  # Output: <__main__.MyClass object at 0x7fbb2c755610>
+```
+In this case:
+
+The print(obj) output shows the default string representation, which is the memory address of the object. This is the default behavior from the object class's __str__ method.
+You can override this method to return a more user-friendly string representation.
+
+```
 class MyClass:
     def __init__(self, name):
         self.name = name
     
-    def greet(self):
-        return f"Hello, {self.name}!"
+    # Override the __str__ method to return a custom string representation
+    def __str__(self):
+        return f"MyClass with name: {self.name}"
 
-obj = MyClass("Alice")
-print(obj.greet())  # Output: Hello, Alice!
+# Creating an object
+obj = MyClass("Sample Object")
+
+# Printing the object will now call the overridden __str__ method
+print(obj)  # Output: MyClass with name: Sample Object
+
+```
+In this example:
+The __str__ method is overridden to return a custom string representation when the object is printed.
+This makes the output more user-friendly than the default representation.
+Summary:
+* Default Superclass (object): If no superclass is explicitly specified, all classes inherit from object by default.
+* object Class: Provides default implementations of basic methods like __init__, __str__, __repr__, etc., which can be overridden.
+* Customizing Behavior: You can override methods like __str__ to provide more meaningful output or customize other behaviors inherited from object.
+
+
+### 2. Constructor: 
+The __init__ method is a special method in Python that is automatically called when a new object is created from a class. It is called the constructor and is used to initialize the attributes of the object.
+```
+class Person:
+    def __init__(self, name, age):
+        self.name = name  # Instance variable
+        self.age = age    # Instance variable
+
+person1 = Person("Alice", 30)
+print(person1.name)  # Output: Alice
+print(person1.age)   # Output: 30
+```
+### 3. Default Constructor:
+    * In Python, a default constructor refers to a constructor that is provided by Python automatically when no constructor is explicitly defined in a class.
+    * If you don't define an __init__ method in a class, Python automatically provides a default constructor that doesn't take any parameters (except for self), and it does nothing.
+```
+class Person:
+    pass  # No __init__ method defined, so Python provides a default constructor
+
+# Creating an object
+person1 = Person()
+
+print(person1)  # Output: <__main__.Person object at 0x7f9f8e6f3f10>
+
+```
+Default Constructor (Automatically Provided by Python)
+When you create a class without an __init__ method, Python automatically creates a default constructor for the class, which does nothing except initializing the object.
+
+In this example:
+
+Person has no __init__ method, so Python provides a default constructor that initializes the object.
+The object is created successfully, but since there is no explicit constructor code, no attributes are initialized, and no special behavior occurs.
+Custom Constructor (With __init__)
+If you want to customize how objects are initialized (i.e., setting attributes when an object is created), you can define an __init__ method, which acts as a custom constructor.
+
+Example with Custom Constructor:
+```
+class Person:
+    def __init__(self, name, age):
+        self.name = name  # Instance variable
+        self.age = age    # Instance variable
+
+# Creating an object with custom constructor
+person1 = Person("Alice", 30)
+
+print(person1.name)  # Output: Alice
+print(person1.age)   # Output: 30
+
+```
+
+### 4. Inheritance and Superclass
+
+  * Inheritance allows a class to inherit attributes and methods from another class (called the superclass or parent class). 
+  * The child class can extend or override the behavior of the parent class. 
+  * We use super() to call methods from a superclass in the child class.
+```
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        print(f"{self.name} makes a sound")
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)  # Calling the constructor of the parent class (Animal)
+        self.breed = breed
+    def speak(self):  # Overriding the speak method
+        print(f"{self.name} barks")
+dog = Dog("Buddy", "Golden Retriever")
+dog.speak()  # Output: Buddy barks
+
+```
+* Instance variables vs class variables
+  * Instance Variables: These are variables that belong to a specific instance of the class. They are usually defined inside the __init__ method using self.
+  * Class Variables: These are variables that belong to the class itself, not to any particular instance. They are shared among all instances of the class.
+```
+class Dog:
+    species = "Canis familiaris"  # Class variable (shared by all instances)
+
+    def __init__(self, name, age):
+        self.name = name  # Instance variable
+        self.age = age    # Instance variable
+
+dog1 = Dog("Buddy", 5)
+dog2 = Dog("Bella", 3)
+
+print(dog1.species)  # Output: Canis familiaris
+print(dog2.species)  # Output: Canis familiaris
+print(dog1.name)     # Output: Buddy
+print(dog2.name)     # Output: Bella
+
+```
+### 5. Class Methods and Static Methods
+    * Class Methods: These methods are bound to the class and not to the instance. They can modify class-level variables. Class methods are defined using the @classmethod decorator and take cls as the first parameter.
+    * Static Methods: These methods do not depend on the class or the instance and are used when a method doesn't need to access or modify the class or instance attributes. Static methods are defined using the @staticmethod decorator.
+```
+class Car:
+    # Class variable
+    count = 0
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+        Car.count += 1  # Incrementing the count when a new car is created
+
+    @classmethod
+    def get_car_count(cls):
+        return cls.count  # Accessing class variable
+
+    @staticmethod
+    def car_info(make, model):
+        print(f"Car Make: {make}, Model: {model}")
+
+# Creating instances
+car1 = Car("Toyota", "Corolla")
+car2 = Car("Honda", "Civic")
+
+# Using class method
+print(Car.get_car_count())  # Output: 2
+
+# Using static method
+Car.car_info("Toyota", "Corolla")  # Output: Car Make: Toyota, Model: Corolla
+
+```
+
+### 6. Overriding vs Overloading in python
+In Python, overriding and overloading are two important concepts related to methods and operators, but they have different meanings and uses. Let's break down both:
+
+1. Method Overriding:
+Overriding happens when a subclass provides its own implementation of a method that is already defined in its superclass. The method in the subclass has the same name, same parameters, and performs a different function or behavior compared to the one in the superclass.
+
+Key Points:
+
+The method in the subclass overrides the method in the superclass.
+It allows the subclass to change or extend the behavior of the inherited method.
+The method signature (name, parameters) in the subclass must match the one in the superclass.
+Example of Method Overriding:
+```
+class Animal:
+    def speak(self):
+        print("Animal makes a sound")
+class Dog(Animal):
+    def speak(self):  # This overrides the speak method of Animal class
+        print("Dog barks")
+class Cat(Animal):
+    def speak(self):  # This overrides the speak method of Animal class
+        print("Cat meows")
+# Creating instances
+dog = Dog()
+cat = Cat()
+dog.speak()  # Output: Dog barks
+cat.speak()  # Output: Cat meows
+```
+When to Use Method Overriding:
+To customize or change the behavior of a method in the child class.
+To implement polymorphism, where the same method name behaves differently depending on the subclass object.
+
+2. Method Overloading:
+Overloading refers to the ability to define multiple methods with the same name but different parameters (either different number of parameters or different types of parameters). Python doesn't support traditional method overloading like in other languages such as Java or C++. Instead, Python allows default arguments and variable-length arguments to achieve similar functionality.
+Using Default Arguments:
+```
+class Calculator:
+    def add(self, a, b=0):  # Second parameter has a default value
+        return a + b
+
+calc = Calculator()
+print(calc.add(5))      # Output: 5 (only one argument, default value for b is used)
+print(calc.add(5, 3))   # Output: 8 (both arguments are provided)
+```
+Using *args (Variable-length Arguments):
+```
+class Calculator:
+    def add(self, *args):
+        return sum(args)
+calc = Calculator()
+print(calc.add(5))          # Output: 5
+print(calc.add(5, 3))       # Output: 8
+print(calc.add(1, 2, 3, 4)) # Output: 10
+```
+
+Summary:
+  * Overriding: Occurs when a subclass provides its own implementation of a method that is already defined in the superclass, allowing the subclass to change the method's behavior.
+  * Overloading: Involves defining methods with the same name but different parameters (this is not natively supported in Python, but it can be simulated using default or variable-length arguments).
+
+### ********* Add more here ***************
+
+
+### Here are the core OOP concepts in Python:
+
+#### 1. Classes and Objects
+* Class: A blueprint for creating objects (instances). It defines properties (attributes) and methods (functions) that the object will have.
+* Object: An instance of a class, created using the class blueprint.
+Example:
+```
+class Car:
+    def __init__(self, make, model):
+        self.make = make  # Attribute
+        self.model = model  # Attribute
+
+    def start(self):  # Method
+        print(f"The {self.make} {self.model} is starting!")
+
+my_car = Car("Toyota", "Corolla")  # Object instantiation
+my_car.start()  # Calling a method
+```
+
+#### 2. Encapsulation
+Encapsulation is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit or class. It also involves restricting access to some of an object's components to protect the object's integrity.
+
+Private: Variables and methods that are not accessible outside the class.
+Public: Variables and methods that are accessible from outside the class.
+In Python, we use an underscore (_) to indicate "protected" members and a double underscore (__) for "private" members.
+
+Example:
+```
+class Person:
+    def __init__(self, name, age):
+        self.__name = name  # Private attribute
+        self.age = age  # Public attribute
+
+    def greet(self):  # Public method
+        print(f"Hello, my name is {self.__name} and I am {self.age} years old.")
+
+person = Person("Alice", 30)
+person.greet()
+# print(person.__name)  # This will raise an AttributeError because __name is private
+```
+#### 3. Inheritance
+Inheritance allows one class (child class) to inherit the attributes and methods from another class (parent class). This helps to reuse code.
+```
+Example:
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):  # Dog is a subclass of Animal
+    def bark(self):
+        print("Woof!")
+
+dog = Dog()
+dog.speak()  # Inherited from Animal
+dog.bark()  # Defined in Dog
+```
+#### 4. Polymorphism
+Polymorphism allows objects of different classes to be treated as objects of a common superclass. It also allows methods to have the same name but behave differently based on the object.
+
+Example:
+```
+class Cat:
+    def sound(self):
+        print("Meow")
+
+class Dog:
+    def sound(self):
+        print("Woof")
+
+def make_sound(animal):
+    animal.sound()
+
+cat = Cat()
+dog = Dog()
+
+make_sound(cat)  # Outputs: Meow
+make_sound(dog)  # Outputs: Woof
+```
+#### 5. Abstraction
+Abstraction involves hiding complex implementation details and showing only the necessary features of an object. In Python, abstraction is typically achieved using abstract classes and methods. Python has an abc module for defining abstract base classes.
+
+Example:
+```
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Woof!")
+
+# dog = Animal()  # This will raise an error because you cannot instantiate an abstract class
+dog = Dog()
+dog.make_sound()  # Outputs: Woof!
+```
