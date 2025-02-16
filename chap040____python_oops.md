@@ -26,6 +26,7 @@ print(MyClass.__bases__)  # Output: (<class 'object'>,)
 
 # Checking the class of the object
 print(type(obj))  # Output: <class '__main__.MyClass'>
+
 ```
 In this example:
 
@@ -43,6 +44,7 @@ obj = MyClass("Sample Object")
 
 # Using the __str__ method inherited from object (or can be overridden)
 print(obj)  # Output: <__main__.MyClass object at 0x7fbb2c755610>
+
 ```
 In this case:
 
