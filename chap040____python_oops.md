@@ -354,10 +354,13 @@ obj = MyClass(10)
 print(obj._value)  # Technically accessible, but not recommended
 ```
 
-Access: Technically, protected variables can still be accessed directly from outside the class, but it’s considered a bad practice. It's an indication to other programmers that the variable is intended for internal use, or for subclass manipulation.
-Intended Usage: Protected variables are typically used when you want the variable to be "protected" from outside interference but still allow subclasses to modify or access it.
+Access: Technically, protected variables can still be accessed directly from outside the class, but it’s considered a bad
+practice. It's an indication to other programmers that the variable is intended for internal use, or for subclass manipulation.
+Intended Usage: Protected variables are typically used when you want the variable to be "protected" from outside 
+interference but still allow subclasses to modify or access it.
 #### 3. Private Variables
-Definition: These variables are intended to be used only within the class. Access to them is strongly discouraged from outside the class, and Python provides name mangling to make it harder to access them directly.
+Definition: These variables are intended to be used only within the class. Access to them is strongly discouraged 
+from outside the class, and Python provides name mangling to make it harder to access them directly.
 Syntax: A double leading underscore __.
 Example:
 
@@ -374,15 +377,18 @@ print(obj.get_value())  # Accessing private variable through a method
 print(obj.__value)  # Will raise an AttributeError
 ```
 
-Access: Python "name mangles" private variables to make them harder to access directly by changing their name (e.g., self.__value becomes _MyClass__value). However, it can still be accessed via the mangled name if absolutely needed, but it's not recommended.
-Intended Usage: Private variables are typically used when you want to restrict external access to an attribute and provide controlled access through getter and setter methods.
+Access: Python "name mangles" private variables to make them harder to access directly by changing their name (e.g., 
+self.__value becomes _MyClass__value). However, it can still be accessed via the mangled name if absolutely needed, 
+but it's not recommended.
+Intended Usage: Private variables are typically used when you want to restrict external access to an attribute and 
+provide controlled access through getter and setter methods.
 
 #### Key Differences:
-|Type   |Syntax	|   Access from Outside	| Intended Use                                                    |
-|--------------|:-----------|:-------------|:----------------------------------------------------------------|
-|Public	|No leading underscore	|Direct access	| Use when you want the variable to be freely accessible.         |
-|Protected	|Single leading underscore (_)	|Access possible, but discouraged	| Intended for internal or subclass usage.                        |
-|Private	|Double leading underscore (__)	|Access via name mangling (not recommended)| 	Intended to be fully hidden, with access only through methods. |
+|Type   |Syntax	|   Access from Outside	| Intended Use                                      |
+|--------------|:-----------|:-------------|:---------------------------------------------------------------------|
+|Public	|No leading underscore	|Direct access	| Use when you want the variable <br/>to be freely accessible.         |
+|Protected	|Single leading underscore (_)	|Access possible, but discouraged	| Intended for internal or <br/>subclass usage.                        |
+|Private	|Double leading underscore (__)	|Access via name mangling (not recommended)| 	Intended to be fully<br/> hidden, with access only through methods. |
 
 #### Additional Notes:
 Python doesn’t strictly enforce access control. The naming conventions (_ for protected and __ for private) are simply guidelines and don’t prevent access.
