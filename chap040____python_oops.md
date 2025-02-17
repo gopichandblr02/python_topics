@@ -318,6 +318,77 @@ person.greet()
 # print(person.__name)  # This will raise an AttributeError because __name is private
 ```
 
+### public vs protected vs private variables in python encapsulation
+
+In Python, encapsulation refers to the concept of restricting direct access to certain object attributes and methods, which helps to protect the internal state of an object from outside interference or misuse. Python doesn't strictly enforce access control like some other languages (e.g., Java or C++), but it provides naming conventions that indicate the intended level of access to a variable.
+
+Here’s how public, protected, and private variables work in Python:
+
+#### 1. Public Variables
+Definition: These variables are accessible from outside the class.
+Syntax: No leading underscores.
+Example:
+
+```
+class MyClass:
+    def __init__(self, value):
+        self.value = value  # public variable
+
+obj = MyClass(10)
+print(obj.value)  # Accessing the public variable
+```
+
+Access: Public variables can be accessed directly from any part of the code.
+Intended Usage: Use public variables when you want them to be available to external code or when there's no need for restricting access.
+#### 2. Protected Variables
+Definition: These variables are meant to be used only within the class and by subclasses (inherited classes). It’s a convention and doesn't provide strict access control.
+Syntax: A single leading underscore _.
+Example:
+
+```
+class MyClass:
+    def __init__(self, value):
+        self._value = value  # protected variable
+
+obj = MyClass(10)
+print(obj._value)  # Technically accessible, but not recommended
+```
+
+Access: Technically, protected variables can still be accessed directly from outside the class, but it’s considered a bad practice. It's an indication to other programmers that the variable is intended for internal use, or for subclass manipulation.
+Intended Usage: Protected variables are typically used when you want the variable to be "protected" from outside interference but still allow subclasses to modify or access it.
+#### 3. Private Variables
+Definition: These variables are intended to be used only within the class. Access to them is strongly discouraged from outside the class, and Python provides name mangling to make it harder to access them directly.
+Syntax: A double leading underscore __.
+Example:
+
+```
+class MyClass:
+    def __init__(self, value):
+        self.__value = value  # private variable
+
+    def get_value(self):
+        return self.__value  # providing controlled access
+
+obj = MyClass(10)
+print(obj.get_value())  # Accessing private variable through a method
+print(obj.__value)  # Will raise an AttributeError
+```
+
+Access: Python "name mangles" private variables to make them harder to access directly by changing their name (e.g., self.__value becomes _MyClass__value). However, it can still be accessed via the mangled name if absolutely needed, but it's not recommended.
+Intended Usage: Private variables are typically used when you want to restrict external access to an attribute and provide controlled access through getter and setter methods.
+
+#### Key Differences:
+|Type   |Syntax	|   Access from Outside	| Intended Use                                                    |
+|--------------|:-----------|:-------------|:----------------------------------------------------------------|
+|Public	|No leading underscore	|Direct access	| Use when you want the variable to be freely accessible.         |
+|Protected	|Single leading underscore (_)	|Access possible, but discouraged	| Intended for internal or subclass usage.                        |
+|Private	|Double leading underscore (__)	|Access via name mangling (not recommended)| 	Intended to be fully hidden, with access only through methods. |
+
+#### Additional Notes:
+Python doesn’t strictly enforce access control. The naming conventions (_ for protected and __ for private) are simply guidelines and don’t prevent access.
+You can still access private variables using their mangled name (e.g., _MyClass__value), but this goes against the purpose of encapsulation.
+To provide controlled access to private variables, it’s common to use getter and setter methods.
+
 #### 3. Inheritance
 Inheritance allows one class (child class) to inherit the attributes and methods from another class (parent class). This helps to reuse code.
 Example:
@@ -379,3 +450,15 @@ class Dog(Animal):
 dog = Dog()
 dog.make_sound()  # Outputs: Woof!
 ```
+
+#### Explanation:
+The Animal class is an abstract class, and it contains an abstract method sound() which has no implementation.
+Any class that inherits from Animal (like Dog and Cat) must implement the sound() method.
+This allows us to hide the implementation details of how the sound() method works and only expose the interface (the fact that Animal has a sound() method).
+Benefits in this Example:
+Abstraction: We don't need to know exactly how Dog or Cat makes a sound; we just need to know that they have a sound() method.
+Polymorphism: We can treat both Dog and Cat objects as Animal objects, calling sound() without caring about the specific type.
+By using abstraction, we can design our code in a more modular, maintainable, and flexible way, making it easier to add new animals (or other features) without modifying existing code significantly.
+
+Conclusion:
+Abstraction allows programmers to focus on high-level functionalities, keeps systems simpler by hiding details, makes code more flexible and maintainable, and improves collaboration by enforcing a clear interface. It helps make code easier to understand, extend, and manage in large software systems.
