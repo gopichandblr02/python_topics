@@ -80,6 +80,9 @@ Implicit Conversion - automatic type conversion
 Explicit Conversion - manual type conversion
 We use the built-in functions like int(), float(), str(), etc to perform explicit type conversion.
 """
+a = 10
+b = a
+b += 1  # If integers were mutable, 'a' would also change, which is undesirable.
 
 # Implicit Conversion Example
 integer_number = 123
