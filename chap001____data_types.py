@@ -59,7 +59,7 @@ An immutable version of a set.
 """
 my_fset = frozenset([1, 2, 3, 4, 5])
 print(type(my_fset))  # Output: <class 'frozenset'>
-
+# my_fset.add(40)  # This will raise an AttributeError
 """
 4. Mapping Type
 Dictionary (dict)
