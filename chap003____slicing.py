@@ -16,26 +16,21 @@ print(a[:])
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-# Get elements starting from index 2
-# to the end of the list
+# Get elements starting from index 2 to the end of the list
 b = a[2:]
 print(b)
-# Get elements starting from index 0
-# to index 3 (excluding 3th index)
+# Get elements starting from index 0 to index 3 (excluding 3th index)
 c = a[:3]
 print(c)
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-# Get elements from index 1
-# to index 4 (excluding index 4)
+# Get elements from index 1 to index 4 (excluding index 4)
 b = a[1:4]
 print(b) # [2, 3, 4]
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-# Get every second element from the list
-# starting from the beginning
+# Get every second element from the list starting from the beginning
 b = a[::2]
 print(b)
-# Get every third element from the list
-# starting from index 2 to 8(exclusive)
+# Get every third element from the list starting from index 2 to 8(exclusive)
 c = a[1:8:3]
 print(c)
 # [1, 3, 5, 7, 9]
