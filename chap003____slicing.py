@@ -93,7 +93,7 @@ print(s3)
 s = "Hello, World!"
 # Characters from index 7 to the end
 print(s[7:])
-# Characters from the start up to index 5 (exclusive)
+# Characters from the start upto index 5 (exclusive)
 print(s[:5])
 # World!
 # Hello
@@ -110,7 +110,7 @@ print(s[1:8:3])
 s = "abcdefghijklmno"
 # Characters from index -4 to the end
 print(s[-4:])
-# Characters from the start up to index -3 (excluding -3)
+# Characters from the start upto index -3 (excluding -3)
 print(s[:-3])
 # Characters from index -5 to -2 (excluding -2)
 print(s[-5:-2])
@@ -123,4 +123,5 @@ print(s[-8:-1:2])
 s = "Python"
 # Reverse the string
 print(s[::-1])
+print(s[-1::-1])
 # nohtyP
