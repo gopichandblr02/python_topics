@@ -6,6 +6,7 @@ pop(): Returns and removes a random element from the set
 remove(): Removes the element from the set
 remove vs discard
 discard -> no error if element is not found
+remove -> Raises a KeyError exception.
 """
 # set of letters
 s = {'g', 'e', 'k', 's'}
