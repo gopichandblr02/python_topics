@@ -4,6 +4,7 @@ clear(): Removes all elements from the set
 discard(): Removes the element from the set
 pop(): Returns and removes a random element from the set
 remove(): Removes the element from the set
+
 remove vs discard
 discard -> no error if element is not found
 remove -> Raises a KeyError exception.
@@ -27,13 +28,27 @@ print('\nSet after updating:', s) # Set after updating: {'k', 's', 'f'}
 print('\nPopped element', s.pop()) # Popped element k
 print('Set after updating:', s)   # Set after updating: {'s', 'f'}
 
+# The pop() method for sets removes and returns an arbitrary (random) element from the set. Unlike lists and dictionaries,
+# sets are unordered, so you cannot specify which item to remove. If the set is empty, it raises a KeyError
+
 s.clear()
 print('\nSet after updating:', s)  # Set after updating: set()
 
+########## disjoint  ############
 x = {"apple", "banana", "cherry"}
 y = {"google", "microsoft", "facebook"}
 z = x.isdisjoint(y)
 print(z)    # True
+set_a = {1, 2, 3}
+set_b = {4, 5, 6}
+set_c = {3, 4, 5}
+
+# Check if set_a and set_b are disjoint
+print(f"Set A and Set B are disjoint: {set_a.isdisjoint(set_b)}") # Output: True
+
+# Check if set_a and set_c are disjoint
+print(f"Set A and Set C are disjoint: {set_a.isdisjoint(set_c)}") # Output: False
+########## disjoint  ############
 
 fruits = frozenset(["apple", "banana", "orange"])
 print(fruits)
@@ -79,3 +94,37 @@ print(my_set)
 my_set = {1, 2, 3}
 my_set.update([4, 5, 6])
 print(my_set)
+# The output of the code will be {1, 2, 3, 4, 5, 6}
+
+
+# 1. Shallow Copy
+# A shallow copy creates a new object, but the elements inside the object are references to the same elements as the original.
+# Changes to nested objects affect both copies, because the inner objects are shared.
+
+import copy
+# Original list
+original = [[1, 2], [3, 4]]
+# Shallow copy
+shallow = copy.copy(original)
+# Modify shallow copy
+shallow[0][0] = 100
+print("Original:", original)
+print("Shallow copy:", shallow)
+
+# Original: [[100, 2], [3, 4]]
+# Shallow copy: [[100, 2], [3, 4]]
+
+# 2. Deep Copy
+# A deep copy creates a new object and recursively copies all nested objects.
+# Changes to the deep copy do not affect the original, even for nested objects.
+
+import copy
+original = [[1, 2], [3, 4]]
+# Deep copy
+deep = copy.deepcopy(original)
+# Modify deep copy
+deep[0][0] = 100
+print("Original:", original)
+print("Deep copy:", deep)
+# Original: [[1, 2], [3, 4]]
+# Deep copy: [[100, 2], [3, 4]]
