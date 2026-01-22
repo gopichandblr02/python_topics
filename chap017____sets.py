@@ -80,8 +80,34 @@ print(set5,type(set5)) # frozenset({1, 2}) <class 'frozenset'>
 # 13. pop()	->  Returns and removes a random element from the set
 # 14. remove()	->  Removes the element from the set
 # 15. symmetric_difference()	->  Returns a set which is the symmetric difference between the two sets
+set_a = {1, 2, 3, 4, 5}
+set_b = {4, 5, 6, 7, 8}
+sym_diff = set_a.symmetric_difference(set_b)
+    # Result: {1, 2, 3, 6, 7, 8}
 # 16. symmetric_difference_update()	->  Updates the existing caller set with the symmetric difference of sets
+set_c = {1, 2, 3, 4, 5}
+set_d = {4, 5, 6, 7, 8}
+set_c.symmetric_difference_update(set_d)
+    # set_c is now: {1, 2, 3, 6, 7, 8}
+    # set_d remains unchanged.
 # 17. union()	->  Returns a set that has the union of all sets
+    # In Python, the union of sets can be achieved using the union() method or the pipe (|) operator.
+    # Both methods combine all unique elements from the sets into a new set.
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+set_c = {5, 6, 7}
+
+# Union of two sets
+union_set_1 = set_a | set_b
+union_set_11 = set_a.union(set_b)
+print(f"Union of set_a and set_b: {union_set_1} {union_set_11}")
+
+# Union of set_a and set_b: {1, 2, 3, 4, 5} {1, 2, 3, 4, 5}
+
+# Union of multiple sets
+union_set_2 = set_a | set_b | set_c
+print(f"Union of multiple sets: {union_set_2}")
+
 # 18. update()	->  Adds elements to the set
 
 my_set = {1, 2, 3}
