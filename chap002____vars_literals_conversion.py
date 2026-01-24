@@ -73,6 +73,11 @@ a={}
 print(a,type(a))
 # {} <class 'dict'>
 
+"""
+In Python, global variables do not reside in a specific "stack frame" in the same way local variables do. 
+Instead, they are stored within the global namespace, which is associated with the module (file) where they are defined
+"""
+
 
 
 ######################### 2. Python Literals ###########################
