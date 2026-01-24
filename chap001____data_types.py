@@ -74,7 +74,7 @@ Represents True or False.
 is_python_fun = True
 print(type(is_python_fun))  # Output: <class 'bool'>
 """
-6. Binary Types
+*****6. Binary Types******
 a. Bytes (bytes)
 Immutable sequence of bytes.
 """
