@@ -55,6 +55,25 @@ x = y  = 'programiz.com'
 print (x)  # prints programiz.com
 print (y)  # prints programiz.com
 
+# Creating an empty set
+my_set = set()
+print(type(my_set))
+# Output: <class 'set'>
+
+my_set = {1, 2, 3, 4}
+print(my_set,type(my_set))
+# {1, 2, 3, 4} <class 'set'>
+
+# Creating an empty dictionary
+my_dict = {}
+print(type(my_dict))
+# Output: <class 'dict'>
+
+a={}
+print(a,type(a))
+# {} <class 'dict'>
+
+
 
 ######################### 2. Python Literals ###########################
 site_name = 'programiz.com'
